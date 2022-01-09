@@ -12,12 +12,14 @@
 .global loader
 
 loader:
-    mov $kernel_stack . %esp
+    mov $kernel_stack, %esp
+    push %eax
+    push %ebx
     call kernelMain
 
 _stop:
     cli
-    hit
+    hlt
     jmp _stop
 
 

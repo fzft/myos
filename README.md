@@ -33,8 +33,14 @@ cpp os workaround :
         5. bootloader don't recognize kernel.bin (look at this file , it will look for magic number, )  so put the magic number in there
         6. before jump into kernel.bin, it some infomation draws from multiboot structure which contains some info : the size of RAM ... -> ax register
         7. copy the magic number into bx register, 
-
+        8. we're outside of operating system, the regular printf it's inside dynamic lib
+        dynamic lib connect our program and glibc
  RAM
+
+ ### talk to hardware
+        1. when communicate to hardware, everything needs to be byte perfect, we need to know
+        exactly how many bytes are there, where are they, we need really precise
+        2. returning assembly, assembly code give us a certain code
  1. FW 2. instructure pointer 3. bootloader 3.5 empty space 4. kernel bin 
 
  
