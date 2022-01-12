@@ -41,6 +41,31 @@ cpp os workaround :
         1. when communicate to hardware, everything needs to be byte perfect, we need to know
         exactly how many bytes are there, where are they, we need really precise
         2. returning assembly, assembly code give us a certain code
+        3. program load into memory and jump into,  data segments, not allow, user space 
+        4. key board, interrupted jump into
+        5. idt switch memory segment
+        6. deal with segment , create globel descriptor table
+
+
+        code segment (can jump into)   data segment (now allowed )
+        globel descriptor table (table of entries)
+        start of segment, length of segment(1024), flags(this is code segment or data segments)
+
+        8 bytes
+        from low -> high
+        2 bytes -> limit
+        2 bytes -> pointer
+        byte -> pointer
+        byte -> access right
+        half -> limit
+        half -> flags
+        byte -> pointer
+4.hardware-communication /ports
+    when you press a key on a keyboard, there will be a signal, which will go to PIC (programmable interrupt controller)
+    not ignore that, need send some data there  
+    mux demux, put a number in here , the mux or demux send data to the port recv data from that port
+    asm(outb ) 
+
  1. FW 2. instructure pointer 3. bootloader 3.5 empty space 4. kernel bin 
 
  

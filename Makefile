@@ -1,6 +1,6 @@
 GPPPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
 ASPARAMS = --32
-objects = loader.o kernel.o
+objects = loader.o gdt.o port.o kernel.o
 LDPARAMS = -melf_i386
 
 %.o: %.cpp
@@ -29,6 +29,9 @@ mykernel.iso: mykernel.bin
 		echo '}'                                 >> iso/boot/grub/grub.cfg
 		grub-mkrescue --output=mykernel.iso iso
 		rm -rf iso
+.PHONY: clean
+clean:
+	rm -f $(objects) mykernel.bin mykernel.iso		
 
 
 
