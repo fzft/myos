@@ -1,5 +1,6 @@
 #include "types.h"
 #include "gdt.h"
+#include "interrupts.h"
 
 // specific memory location in RAM 0xb8000  [a, color info  ,b], this black and white or text in there in very beginning
 // copy the high byte as same before and overwrite the low byte
@@ -44,6 +45,8 @@ extern "C" void kernelMain(void *mutlboot_structure, uint32_t magicnumber)
     printf("Hello Welcome to fzftOS\n");
     printf("Hello Welcome to fzftOS");
     GlobalDescriptorTable gdt;
-    while (1)
-        ;
+    InterruptManager interrupts(&gdt);
+    
+    interrupts.Activate();
+    while (1);
 }

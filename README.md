@@ -65,6 +65,7 @@ cpp os workaround :
     not ignore that, need send some data there  
     mux demux, put a number in here , the mux or demux send data to the port recv data from that port
     asm(outb ) 
+5. handle interrupt cpu would push a number a stack    
 
  1. FW 2. instructure pointer 3. bootloader 3.5 empty space 4. kernel bin 
 
